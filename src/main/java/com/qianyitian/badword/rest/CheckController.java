@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(value = "/badword")
 public class CheckController {
     private Logger logger = LoggerFactory.getLogger(getClass());
 

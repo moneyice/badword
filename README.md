@@ -3,12 +3,12 @@
 
 
 过滤模式：
-POST http://localhost:8008/badword/filter
+POST http://localhost:8008/filter
 BODY: 放入要过滤的语句
 
 
 检查模式：
-POST http://localhost:8008/badword/check
+POST http://localhost:8008/check
 BODY：放入要检查的语句
 
 
