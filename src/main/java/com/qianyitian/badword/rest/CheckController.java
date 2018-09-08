@@ -16,19 +16,22 @@ public class CheckController {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
 
-     Sensitives sens = null;
+    Sensitives sens = null;
 
     public CheckController() {
         final String dicHome = "./config/dics";
-         sens = Sensitives.singleton(dicHome);
+        sens = Sensitives.singleton(dicHome);
     }
 
     @RequestMapping(value = "/check", method = RequestMethod.POST)
     public WordFilterResponseVO check(@RequestBody String sentence) {
 
         Set<String> sensitives = sens.judge("all", sentence);
-        if (sensitives.isEmpty()){ return new WordFilterResponseVO(true);}
-        else{ return new WordFilterResponseVO(sensitives);}
+        if (sensitives.isEmpty()) {
+            return new WordFilterResponseVO(true);
+        } else {
+            return new WordFilterResponseVO(sensitives);
+        }
 
     }
 
@@ -36,8 +39,11 @@ public class CheckController {
     public WordFilterResponseVO filter(@RequestBody String sentence) {
 
         Optional<String> mosaic = sens.mosaic("all", sentence);
-        if (!mosaic.isPresent()) {return new WordFilterResponseVO(true);}
-        else {return new WordFilterResponseVO(mosaic.get());}
+        if (!mosaic.isPresent()) {
+            return new WordFilterResponseVO(true);
+        } else {
+            return new WordFilterResponseVO(mosaic.get());
+        }
 
     }
 }
